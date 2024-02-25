@@ -1,0 +1,66 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SurveySystem extends JFrame {
+
+    private JTextField ageField;
+    private JTextField satisfactionField;
+    private JTextField colorField;
+
+    public SurveySystem() {
+        super("Online Survey System");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel(new GridLayout(4, 2));
+
+        panel.add(new JLabel("What is your age?", SwingConstants.RIGHT));
+        ageField = new JTextField(10);
+        panel.add(ageField);
+
+        panel.add(new JLabel("How satisfied are you with our service? (1-5)", SwingConstants.RIGHT));
+        satisfactionField = new JTextField(10);
+        panel.add(satisfactionField);
+
+        panel.add(new JLabel("What is your favorite color?", SwingConstants.RIGHT));
+        colorField = new JTextField(10);
+        panel.add(colorField);
+
+        JButton submitButton = new JButton("Submit");
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String age = ageField.getText();
+                String satisfaction = satisfactionField.getText();
+                String color = colorField.getText();
+
+                System.out.println("Survey submitted:");
+                System.out.println("Age: " + age);
+                System.out.println("Satisfaction: " + satisfaction);
+                System.out.println("Favorite color: " + color);
+            }
+        });
+
+        panel.add(new JLabel(""));
+        panel.add(submitButton);
+
+        add(panel);
+        pack();
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new SurveySystem();
+    }
+}
+
+
+
+
+
+
